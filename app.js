@@ -56,7 +56,6 @@ const views = {
       "Claims Automation",
       "Partner APIs",
       "Enterprise Integration Hub",
-      "Application Portfolio & Lifecycle",
     ],
     cards: [
       {
@@ -88,13 +87,6 @@ const views = {
         summary: "ลดการเชื่อมต่อแบบ point-to-point",
       },
       {
-        title: "Application Portfolio Management",
-        owner: "EA Office",
-        maturity: "Target",
-        type: "support",
-        summary: "จัดลำดับความสำคัญของระบบด้วย heatmap และ lifecycle",
-      },
-      {
         title: "Data & Analytics Hub",
         owner: "Data Office",
         maturity: "Target",
@@ -112,7 +104,6 @@ const views = {
       "Claims & Loss",
       "Risk & Underwriting",
       "Regulatory Reporting",
-      "Data Lineage & Governance",
     ],
     cards: [
       {
@@ -143,13 +134,6 @@ const views = {
         type: "support",
         summary: "ทำให้ทุกทีมค้นหาและเข้าใจข้อมูลได้ง่ายขึ้น",
       },
-      {
-        title: "Data Lineage Tracking",
-        owner: "Data Governance",
-        maturity: "In-flight",
-        type: "diff",
-        summary: "เห็นการไหลของข้อมูลเพื่อ audit และ impact analysis",
-      },
     ],
   },
   infra: {
@@ -161,7 +145,6 @@ const views = {
       "Resilient DR",
       "Observability & Monitoring",
       "Automation & DevSecOps",
-      "Technology Standards",
     ],
     cards: [
       {
@@ -192,27 +175,9 @@ const views = {
         type: "support",
         summary: "DR site พร้อม RPO/RTO ตาม SLA",
       },
-      {
-        title: "Technology Standards Library",
-        owner: "EA Office",
-        maturity: "Evolving",
-        type: "support",
-        summary: "มาตรฐาน tech stack เพื่อควบคุม risk และ cost",
-      },
     ],
   },
 };
-
-const platformCapabilities = [
-  "Capability map + heatmap",
-  "Application portfolio & lifecycle",
-  "Business process catalog",
-  "Data lineage & domains",
-  "Integration/API inventory",
-  "Technology standards & roadmaps",
-  "Risk, compliance & controls",
-  "Scenario planning & what-if",
-];
 
 const journeyData = [
   {
@@ -238,7 +203,6 @@ const viewDescription = document.getElementById("viewDescription");
 const cards = document.getElementById("cards");
 const focusList = document.getElementById("focusList");
 const viewTabs = document.getElementById("viewTabs");
-const capabilityList = document.getElementById("capabilityList");
 const journey = document.getElementById("journey");
 
 function renderView(key) {
@@ -289,12 +253,6 @@ function renderJourney() {
     .join("");
 }
 
-function renderCapabilities() {
-  capabilityList.innerHTML = platformCapabilities
-    .map((item) => `<li>• ${item}</li>`)
-    .join("");
-}
-
 viewTabs.addEventListener("click", (event) => {
   const button = event.target.closest("button");
   if (!button) return;
@@ -303,6 +261,5 @@ viewTabs.addEventListener("click", (event) => {
   renderView(button.dataset.view);
 });
 
-renderCapabilities();
 renderJourney();
 renderView("business");
